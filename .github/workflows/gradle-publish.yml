@@ -27,7 +27,7 @@ jobs:
       - uses: giboow/action-aws-cli@v1
         with:
 # https://test-stack-static-site.s3.ap-south-1.amazonaws.com/index
-         args: s3 sync --delete --acl public-read index.html s3://test-stack-static-site/
+         args: s3 sync --delete --acl public-read ${{ github.workspace }} s3://test-stack-static-site/
 #          s3 website s3://test-stack-static-site --index-document test.html
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ID }}

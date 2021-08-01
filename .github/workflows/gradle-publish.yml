@@ -7,14 +7,14 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: echo "<html><head><title>GH Actions Test</title></head><body><h1>YO testt THIS WORKS!</h1></body></html>" > test.html
-      - uses: stcalica/s3-upload@master
-        with:
-          bucket: test-stack-static-site
-          package: index.html
-          key: index
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_SECRET_ID: ${{ secrets.AWS_SECRET_ID }}
-          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+#       - uses: stcalica/s3-upload@master
+#         with:
+#           bucket: test-stack-static-site
+#           package: index.html
+#           key: index
+#           AWS_REGION: ${{ secrets.AWS_REGION }}
+#           AWS_SECRET_ID: ${{ secrets.AWS_SECRET_ID }}
+#           AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
 #       - uses: chrislennon/action-aws-cli@v1.1
 #           # All commands after this point have access to the AWS CLI
 #       - run: aws s3 ls
@@ -24,7 +24,7 @@ jobs:
       - uses: giboow/action-aws-cli@v1
         with:
 # https://test-stack-static-site.s3.ap-south-1.amazonaws.com/index
-         args: s3 website s3://test-stack-static-site --index-document index.html
+         args: s3 website s3://test-stack-static-site --index-document test.html
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
